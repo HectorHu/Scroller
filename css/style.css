@@ -80,3 +80,11 @@ ul#img-nav {
 	border-radius: 10px;
 	font-size: 0;
 }
+
+.image {
+	display: none;
+}
+
+.current {
+	display: inline;
+}
