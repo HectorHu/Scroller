@@ -1,4 +1,7 @@
 (function() {
+	var prev = document.getElementById('prev');
+	var next = document.getElementById('next');
+
 	var img_nav = document.getElementById('img-nav').getElementsByTagName('li');
 	var imgs = document.getElementsByClassName('image');
 	for(var i = 0; i < img_nav.length; ++i) {
@@ -16,11 +19,19 @@
 		};
 	}
 
-	var interval = 3000;
-	setTimeout(function(){
-		getNextImg();
-    	setTimeout(arguments.callee, interval);
-    }, interval);
+	prev.onclick = getPrevImg;
+
+	next.onclick = getNextImg;
+
+	function Begin() {
+		var interval = 3000;
+		setTimeout(function(){
+			getNextImg();
+	    	setTimeout(arguments.callee, interval);
+	    }, interval);
+	}
+
+	Begin();
 })();
 
 function getNextImg() {
@@ -31,7 +42,7 @@ function getNextImg() {
 			nextImg = '',
 			currNav = '',
 			nextNav = '';
-		if(selected[i].className.indexOf('selected') >= 0) {
+		if(selected[i].className.indexOf('selected') > 0) {
 			currNav = selected[i];
 			currImg = selectedImg[i];
 			if(i == (selected.length - 1)) {
@@ -42,10 +53,36 @@ function getNextImg() {
 				nextImg = selectedImg[i+1];
 			}
 			currNav.className = "nav";
-			nextNav.className += ' selected';
+			nextNav.className += " selected";
 			currImg.className = "image";
 			nextImg.className += " current";
-			console.log("do");
+			break;
+		}
+	};
+}
+
+function getPrevImg() {
+	var selected = document.getElementsByClassName('nav');
+	var selectedImg = document.getElementsByClassName('image');
+	for (var i = 0; i < selected.length; i++) {
+		var currImg = '',
+			nextImg = '',
+			currNav = '',
+			nextNav = '';
+		if(selected[i].className.indexOf('selected') > 0) {
+			currNav = selected[i];
+			currImg = selectedImg[i];
+			if(i == 0) {
+				nextNav = selected[selected.length-1];
+				nextImg = selectedImg[selected.length-1];
+			} else {
+				nextNav = selected[i-1];
+				nextImg = selectedImg[i-1];
+			}
+			currNav.className = "nav";
+			nextNav.className += " selected";
+			currImg.className = "image";
+			nextImg.className += " current";
 			break;
 		}
 	};
