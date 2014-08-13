@@ -1,9 +1,11 @@
 (function() {
+	var imgboard = document.getElementById('img-board');
+	var operation = document.getElementById('operation');
 	var prev = document.getElementById('prev');
 	var next = document.getElementById('next');
-
 	var img_nav = document.getElementById('img-nav').getElementsByTagName('li');
 	var imgs = document.getElementsByClassName('image');
+
 	for(var i = 0; i < img_nav.length; ++i) {
 		img_nav[i].i = i;
 		img_nav[i].onclick = function() {
@@ -29,6 +31,13 @@
 			getNextImg();
 	    	setTimeout(arguments.callee, interval);
 	    }, interval);
+	}
+
+	imgboard.onmouseover = function() {
+		operation.style.display = "block";
+	}
+	imgboard.onmouseout = function() {
+		operation.style.display = "none";
 	}
 
 	Begin();

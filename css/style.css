@@ -88,3 +88,22 @@ ul#img-nav {
 .current {
 	display: inline;
 }
+
+#operation {
+	display: none;
+	position: absolute;
+	bottom: 50%;
+	width: 100%;
+}
+
+#operation #prev {
+	padding: 3px;
+	background: rgba(255,255,255,.3);
+	float: left;
+}
+
+#operation #next {
+	padding: 3px;
+	background: rgba(255,255,255,.3);
+	float: right;
+}
