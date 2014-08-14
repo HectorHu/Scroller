@@ -6,20 +6,7 @@
 	var img_nav = document.getElementById('img-nav').getElementsByTagName('li');
 	var imgs = document.getElementsByClassName('image');
 
-	for(var i = 0; i < img_nav.length; ++i) {
-		img_nav[i].i = i;
-		img_nav[i].onclick = function() {
-			var nav_class = this.className;
-			if(nav_class != 'selected') {
-				var selected = document.getElementsByClassName('selected');
-				var selectedImg = document.getElementsByClassName('current');
-				selected[0].className = "nav";
-				selectedImg[0].className = "image";
-				this.className += ' selected';
-				imgs[this.i].className += ' current';
-			}
-		};
-	}
+	BindImgNav(img_nav);
 
 	prev.onclick = getPrevImg;
 
@@ -43,6 +30,25 @@
 	Begin();
 })();
 
+//为下面的导航栏添加事件
+function BindImgNav(img_nav) {
+	for(var i = 0; i < img_nav.length; ++i) {
+		img_nav[i].i = i;
+		img_nav[i].onclick = function() {
+			var nav_class = this.className;
+			if(nav_class != 'selected') {
+				var selected = document.getElementsByClassName('selected');
+				var selectedImg = document.getElementsByClassName('current');
+				selected[0].className = "nav";
+				selectedImg[0].className = "image";
+				this.className += ' selected';
+				imgs[this.i].className += ' current';
+			}
+		};
+	}
+}
+
+//上一张
 function getNextImg() {
 	var selected = document.getElementsByClassName('nav');
 	var selectedImg = document.getElementsByClassName('image');
@@ -70,6 +76,7 @@ function getNextImg() {
 	};
 }
 
+//下一张
 function getPrevImg() {
 	var selected = document.getElementsByClassName('nav');
 	var selectedImg = document.getElementsByClassName('image');
