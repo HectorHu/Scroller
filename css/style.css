@@ -40,6 +40,8 @@ a:visited { text-decoration: none;color: green}
 }
 
 .image {
+	opacity: 0.9;
+	/*filter:alpha(opacity=40);*/
 	width: 800px;
 	height: 475px;
 }
